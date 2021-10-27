@@ -1,11 +1,23 @@
 <template>
     <button class="btn btn-primary">
-        <i class="fa fa-2x fa-plus"></i>
+        <i :class="changeIcon"></i>
     </button>
 </template>
 
 <script>
 export default {
+
+    props: {
+        icon: {
+            type: String,
+            default: 'fa-plus'
+        }
+    },
+    computed: {
+        changeIcon() {
+            return ( this.icon ) ? `fa fa-2x ${ this.icon }` : 'fa fa-2x fa-plus'
+        }
+    }
 
 }
 </script>

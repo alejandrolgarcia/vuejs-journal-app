@@ -9,7 +9,7 @@
             Journal
         </a>
         <div class="d-flex">
-            <button class="btn btn-outline-info mx-2">
+            <button class="btn btn-outline-info btn-sm mx-2">
                 <i class="fa fa-sign-out-alt" ></i>
             </button>
         </div>

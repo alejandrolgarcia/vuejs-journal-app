@@ -7,6 +7,11 @@ export default {
             path: '',
             name: 'no-entry',
             component: () => import(/* webpackChunkName: "journal-no-entry" */ '@/modules/journal/views/NoEntrySelected.vue'),
+        },
+        {
+            path: ':id',
+            name: 'entry',
+            component: () => import(/* webpackChunkName: "journal-entry-view" */ '@/modules/journal/views/EntryView.vue'),
         }
 
     ]
