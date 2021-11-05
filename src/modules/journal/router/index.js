@@ -12,6 +12,11 @@ export default {
             path: ':id',
             name: 'entry',
             component: () => import(/* webpackChunkName: "journal-entry-view" */ '@/modules/journal/views/EntryView.vue'),
+            props: ( route ) => {
+                return {
+                    id: route.params.id
+                }
+            }
         }
 
     ]

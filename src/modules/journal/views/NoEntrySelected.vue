@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-center">
-      <h1>No hay elementos seleccionados</h1>
+      <h3>¡No hay elementos seleccionados!</h3>
   </div>
   <Fab />
 </template>
@@ -17,6 +17,7 @@ export default {
 
 <style lang="scss" scoped>
     div {
+        align-items: center;
         height: 100%;
     }
 </style>
