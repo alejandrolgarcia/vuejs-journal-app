@@ -12,6 +12,12 @@ export const updateEntry = ( state, entry ) => { // entry actualizada
     state.entries[ idx ] = entry
 }
 
-export const addEntry = ( /*state*/ ) => {
+export const addEntry = ( state, entry ) => {
+    state.entries = [ entry, ...state.entries ]
+    state.isLoading = false
+}
 
+export const deleteEntry = ( state, id ) => {
+    const idx = state.entries.map( e => e.id ).indexOf( id )
+    state.entries.splice( idx, 1 )
 }

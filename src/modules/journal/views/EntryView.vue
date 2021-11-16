@@ -8,7 +8,10 @@
             </div>
 
             <div>
-                <button class="btn btn-danger mx-2 btn-sm">
+                <button class="btn btn-danger mx-2 btn-sm"
+                    v-if="entry.id"
+                    @click="onDeleteEntry"
+                >
                     Borrar
                     <i class="fa fa-trash-alt"></i>
                 </button>
@@ -66,17 +69,38 @@ export default {
     },
 
     methods: {
-        ...mapActions('journal',['updateEntry']),
+        ...mapActions('journal',['updateEntry', 'createEntry', 'deleteEntry']),
 
         loadEntry() {
-            const entry = this.getEntriesById( this.id )
-            if( !entry ) return this.$router.push({ name: 'no-entry' })
+
+            let entry;
+
+            if ( this.id === 'new' ) {
+                entry = {
+                    text: '',
+                    date: new Date().getTime()
+                }
+            } else {
+                entry = this.getEntriesById( this.id )
+                if( !entry ) return this.$router.push({ name: 'no-entry' })
+            }
 
             this.entry = entry
         },
-        saveEntry() {
-            console.log('Entrada guardada')
-            this.updateEntry( this.entry )
+        async saveEntry() {
+
+            if ( this.entry.id ) {
+                // Actualizar entrada
+                await this.updateEntry( this.entry )
+            } else {
+                // Crear nueva entrada
+                const idEntry = await this.createEntry( this.entry )
+                this.$router.push({ name: 'entry', params: { id: idEntry } })
+            }
+        },
+        async onDeleteEntry() {
+            await this.deleteEntry( this.entry.id )
+            this.$router.push({ name: 'no-entry' })
         }
     },
 
