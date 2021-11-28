@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <div @click="goToJournal" class="btn btn-primary">Primary</div>
+    <button @click="goToJournal" class="btn btn-primary">Primary</button>
   </div>
 </template>
 
